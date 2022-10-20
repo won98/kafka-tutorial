@@ -21,12 +21,6 @@ const initKafka = async () => {
       console.log(push);
       console.log(arr);
       if (arr.length == 5) {
-        // let save = arr.forEach((value) => {
-        //   console.log(value.tostring());
-        // });
-
-        // console.log(save);
-        // console.log(save);
         const rows = await chatting
           .bulkCreate(arr, { hooks: true })
           .catch((err) => {
@@ -39,35 +33,8 @@ const initKafka = async () => {
       console.log({
         value: message.value.toString(),
       });
-      //}
-
-      // let array = Array.push(message.value.toString);
-      // console.log(array);
-      // if ((Array.length = 5)) {
-      //   const rows = await chatting.create({
-      //     message: message,
-      //   });
-      //   console.log(rows);
-      // }
-      // for (let i = 0; i < message.value.length; i++) {
-      //   // const element = message.value[i];
-      //   if (message.value[i] == 5) {
-      //     const rows = await chatting.create({
-      //       message: message,
-      //     });
-      //     console.log(rows);
-      //   }
-      // }
     },
   });
 };
 
 initKafka();
-// const rows = await chatting.create({
-//   message: message.value,
-// });
-// console.log(rows);
-// console.log({
-//   value: message.value,
-// });
-// console.log(message);
