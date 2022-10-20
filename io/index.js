@@ -51,23 +51,10 @@ io.on("connection", (socket) => {
     console.log("disconnect");
   });
 });
-// io.on("connection", (socket) => {
-//   socket.on("chat message", (msg) => {
-//     console.log("message: " + msg);
-//   });
-// });
 io.emit("some event", {
   someProperty: "some value",
   otherProperty: "other value",
-}); // This will emit the event to all connected sockets
-// io.on("connection", (socket) => {
-//   socket.broadcast.emit("hi");
-// });
-// io.on("connection", (socket) => {
-//   socket.on("chat message", (msg) => {
-//     io.emit("chat message", msg);
-//   });
-// });
+});
 io.on("connection", (socket) => {
   socket.on("chat message", async (message) => {
     try {
@@ -78,51 +65,6 @@ io.on("connection", (socket) => {
       console.log(kafkasend);
       io.emit("chat message", message);
       console.log(message);
-      // const rows = await chatting.create({
-      //   message: message,
-      // });
-      //console.log(msg);
-      // const send = await producer.sendBatch({
-      //   topic: "topic",
-      //   message: {
-      //     key: "key",
-      //     value: kafkamsg,
-      //   },
-      // });
-      // let kafkasend = JSON.stringify(message);
-      // kafkasend = [message];
-      // console.log(kafkasend);
-      // let sendmsg = {
-      //   topic: "topic",
-      //   message: kafkasend,
-      // };
-      // console.log(sendmsg);
-      // for (let i = 0; i < kafkasend.length; i++) {
-      //   let element = [kafkasend[i]];
-      //   if (i == 4) {
-      //     // const rows = await chatting.create({
-      //     //   message: kafkasend,
-      //     // });
-      //     console.log("element: " + element);
-      //     //console.log(rows);
-      //   } else {
-      //     console.log("err");
-      //   }
-      // }
-
-      // for (let i = 0; i < sendmsg.length; i++) {
-      //   producer.sendBatch([sendmsg[i]], async (err, data) => {
-      //     if ((sendmsg[i] = 5)) {
-      //       chatting.create({
-      //         message: message,
-      //       });
-      //       //console.log(rows);
-      //     } else {
-      //       console.log(err);
-      //     }
-      //   });
-      //   //console.log(rows);
-      // }
     } catch (err) {
       console.log(err);
     }
